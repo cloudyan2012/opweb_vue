@@ -1,10 +1,13 @@
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import SmartView from "@/views/SmartView.vue";
 import LoginView from "@/views/LoginView.vue";
+import LogoutView from "@/views/LogoutView.vue";
+import  { useUserStore }  from "@/stores/user";
+import { computed } from 'vue';
 
 const router = createRouter({
-  history: createWebHashHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: "/",
@@ -20,8 +23,21 @@ const router = createRouter({
       path: "/login",
       name: "login",
       component: LoginView
+    },
+    {
+      path: "/logout",
+      name: "logout",
+      component: LogoutView
     }
   ],
 });
+
+router.beforeEach(async (to, from) => {
+  const userStore = useUserStore();
+  const username = computed(() => userStore.getUser)
+  if (!username.value && to.name !== 'login') {
+    return { name: 'login', query: { redirect: to.fullPath }}
+  }
+})
 
 export default router;

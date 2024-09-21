@@ -18,27 +18,23 @@
     <div v-if="msg" class="error-msg">{{msg}}</div>    
 </template>
    
-  <script>
+<script>
   import { reactive, ref } from 'vue';
   import req from '../utils/request';
   import {useRouter} from 'vue-router';
   export default {
     setup() {
+      const router = useRouter();
       const credentials = reactive({
         username: '',
         password: ''
       });
       const msg = ref(null);
-      const router = useRouter();
       const login = async() => {
         await req.post('/token', credentials)
          .then(response => {
             localStorage.setItem('token', response.token);
-            if (router.query?.redirect === 'logout') {
-             router.push('/');
-             } else {
-             router.push(router.query?.redirect || '/');
-           }
+            router.push('/');
           })
          .catch(error => {
             msg.value=error;
@@ -52,9 +48,9 @@
       };
     }
   };
-  </script>
+</script>
    
-  <style scoped>
+<style scoped>
   .login-container {
     display: flex;
     justify-content: center;
@@ -99,4 +95,4 @@
   button[type="submit"]:hover {
     background-color: #4cae4c;
   }
-  </style>
+</style>

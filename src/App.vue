@@ -1,11 +1,32 @@
-<script setup>
+<script>
 import NavHeader from "./views/NavView.vue";
 import Pannel from "./views/PannelView.vue";
+import Login from "./views/LoginView.vue";
+import  { useUserStore }  from "./stores/user";
+import { computed } from 'vue';
+export default {
+  name: "App",
+  components: {
+    NavHeader,
+    Pannel,
+    Login,
+  },
+  setup() {
+    const userStore = useUserStore();
+    const username = computed(() => userStore.getUser)
+    return {username}
+  }
+};
 </script>
 
 <template>
-  <NavHeader />
-  <Pannel />
+  <div v-if="username">
+    <NavHeader />
+    <Pannel />
+  </div>
+  <div v-else>
+    <Login />
+  </div>
 </template>
 
 <style>

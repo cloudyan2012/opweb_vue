@@ -21,8 +21,7 @@ onMounted(getOnlineDev);
 
 <template>
   <div>
-    onlineDev:
-    <div v-if="Msg">err:{{ Msg }}</div>
+    <div v-if="Msg" class="error-msg">{{ Msg }}</div>
     <div>{{ dev2g }}</div>
     <div>{{ dev5g }}</div>
   </div>
