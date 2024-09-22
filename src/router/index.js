@@ -34,7 +34,7 @@ const router = createRouter({
 
 router.beforeEach(async (to, from) => {
   const userStore = useUserStore();
-  const username = computed(() => userStore.getUser)
+  const username = computed(() => userStore.getUser);
   if (!username.value && to.name !== 'login') {
     return { name: 'login', query: { redirect: to.fullPath }}
   }

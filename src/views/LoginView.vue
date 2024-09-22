@@ -33,14 +33,15 @@
       const login = async() => {
         await req.post('/token', credentials)
          .then(response => {
-            localStorage.setItem('token', response.token);
-            router.push('/');
+            localStorage.setItem('token', response.token);  
+            const path = router.currentRoute.value.query.redirect;
+            console.log(path);
+            router.push(path || '/');    
           })
          .catch(error => {
             msg.value=error;
          })
       };
-   
       return {
         credentials,
         login,
