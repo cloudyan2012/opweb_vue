@@ -21,10 +21,10 @@
 <script>
   import { reactive, ref } from 'vue';
   import req from '../utils/request';
-  import {useRouter} from 'vue-router';
+  import router from '@/router';
   export default {
     setup() {
-      const router = useRouter();
+      let path = router.currentRoute.value.query.redirect;
       const credentials = reactive({
         username: '',
         password: ''
@@ -34,7 +34,6 @@
         await req.post('/token', credentials)
          .then(response => {
             localStorage.setItem('token', response.token);  
-            const path = router.currentRoute.value.query.redirect;
             console.log(path);
             router.push(path || '/');    
           })
