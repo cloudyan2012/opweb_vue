@@ -24,7 +24,6 @@
   import router from '@/router';
   export default {
     setup() {
-      let path = router.currentRoute.value.query.redirect;
       const credentials = reactive({
         username: '',
         password: ''
@@ -33,6 +32,7 @@
       const login = async() => {
         await req.post('/token', credentials)
          .then(response => {
+            let path = router.currentRoute.value.query.redirect;
             localStorage.setItem('token', response.token);  
             console.log(path);
             router.push(path || '/');    
