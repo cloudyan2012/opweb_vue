@@ -1,5 +1,5 @@
 # myweb
-
+shell cgi, vue3+js,  element ui 前后端分离
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
