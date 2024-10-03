@@ -4,7 +4,6 @@ import SmartView from "@/views/SmartView.vue";
 import LoginView from "@/views/LoginView.vue";
 import LogoutView from "@/views/LogoutView.vue";
 import  { useUserStore }  from "@/stores/user";
-import { computed } from 'vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -34,7 +33,7 @@ const router = createRouter({
 
 router.beforeEach(async (to, from) => {
   const userStore = useUserStore();
-  const username = computed(() => userStore.getUser);
+  const username = userStore.getUser;
   if (!username.value && to.name !== 'login') {
     return { name: 'login', query: { redirect: to.fullPath }}
   }

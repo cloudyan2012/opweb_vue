@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import onlineDev from "@/components/OnlineDev.vue";
+import onlineDev from "@/components/Card_Dev.vue";
 import Card from '@/components/Card.vue';
 
 export default {

@@ -19,10 +19,10 @@
 </template>
    
 <script>
-  import { reactive, ref } from 'vue';
-  import req from '../utils/request';
-  import router from '@/router';
-  export default {
+import router from '../router';
+import { reactive, ref } from 'vue';
+import req from '../utils/request';
+export default {
     setup() {
       const credentials = reactive({
         username: '',
@@ -47,7 +47,7 @@
         msg
       };
     }
-  };
+};
 </script>
    
 <style scoped>

@@ -4,7 +4,7 @@ import { ref, computed } from 'vue'
 export const useUserStore = defineStore('user', () => {
   const username = ref(null)
 
-  const getUser = computed(() => {
+  function getUser ()  {
     const token = localStorage.getItem('token') // 从 localStorage 获取 token
     if (token) {
       try {
@@ -18,7 +18,7 @@ export const useUserStore = defineStore('user', () => {
       username.value = null; // 如果没有token，重置username
     }
     return username.value;
-  });
+  };
 
   return { username, getUser };
 })
