@@ -5,7 +5,6 @@
           <span>{{ title }}</span>
         </div>
       </template>
-      aaa
       <slot></slot>
     </el-card>
 </template>

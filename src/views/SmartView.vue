@@ -1,22 +1,36 @@
 <template>
-  <div>
-    <Card :title="cardTitle" ><onlineDev /></Card>
+  <div v-for="card in cards" :key="card.id">
+    <Card :title="card.title" >
+      <component :is="card.name"></component>
+    </Card>
   </div>
+  <div v-if="Msg">{{ Msg }}</div>
 </template>
 
 <script>
-import onlineDev from "@/components/Card_Dev.vue";
+import onlinedev from "@/components/OnlineDev.vue";
 import Card from '@/components/Card.vue';
-
+import req from '../utils/request';
+import { onMounted, ref } from "vue";
 export default {
   components: {
     Card,
-    onlineDev
+    onlinedev
   },
-  data() {
-    return {
-      cardTitle: '这是卡片标题'
-    }
+  setup() {
+    const cards = ref([]);
+    const Msg = ref("");
+    const getCards = async () => {
+  try {
+    const res = await req.get("/cards");
+    cards.value = res.data;
+  } catch (error) {
+    Msg.value = error;
   }
-}
+};
+
+onMounted(getCards);
+return {cards,Msg,onlinedev};
+  }
+  }
 </script>

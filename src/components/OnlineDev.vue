@@ -1,3 +1,10 @@
+<template>
+  <div>
+    <div v-if="Msg" class="error-msg">{{ Msg }}</div>
+    <div>{{ dev2g }}</div>
+    <div>{{ dev5g }}</div>
+  </div>
+</template>
 <script setup>
 import req from "../utils/request";
 import { onMounted, ref } from "vue";
@@ -10,7 +17,7 @@ const getOnlineDev = async () => {
   try {
     const res = await req.get("/onlinedev");
     dev2g.value = res.w2g;
-    dev5g.value = res.w2g;
+    dev5g.value = res.w5g;
   } catch (error) {
     Msg.value = error;
   }
@@ -18,11 +25,3 @@ const getOnlineDev = async () => {
 
 onMounted(getOnlineDev);
 </script>
-
-<template>
-  <div>
-    <div v-if="Msg" class="error-msg">{{ Msg }}</div>
-    <div>{{ dev2g }}</div>
-    <div>{{ dev5g }}</div>
-  </div>
-</template>

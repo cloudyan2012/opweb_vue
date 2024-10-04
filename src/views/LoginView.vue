@@ -19,7 +19,7 @@
 </template>
    
 <script>
-import router from '../router';
+import { useRouter } from 'vue-router';
 import { reactive, ref } from 'vue';
 import req from '../utils/request';
 export default {
@@ -28,14 +28,14 @@ export default {
         username: '',
         password: ''
       });
+      const router = useRouter();
       const msg = ref(null);
       const login = async() => {
         await req.post('/token', credentials)
          .then(response => {
             let path = router.currentRoute.value.query.redirect;
-            localStorage.setItem('token', response.token);  
-            console.log(path);
-            router.push(path || '/');    
+            localStorage.setItem('token', response.token); 
+            router.push( path || '/');    
           })
          .catch(error => {
             msg.value=error;
