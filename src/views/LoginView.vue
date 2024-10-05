@@ -2,6 +2,7 @@
     <div class="login-container">
       <div class="login-box">
         <h2>Login</h2>
+        <div v-if="msg" class="error-msg">{{msg}}</div> 
         <form @submit.prevent="login">
           <div class="form-group">
             <label for="username">Username:</label>
@@ -14,8 +15,7 @@
           <button type="submit">Login</button>
         </form>
       </div>
-    </div>
-    <div v-if="msg" class="error-msg">{{msg}}</div>    
+    </div>   
 </template>
    
 <script>
@@ -24,11 +24,11 @@ import { reactive, ref } from 'vue';
 import req from '../utils/request';
 export default {
     setup() {
+      const router =useRouter();
       const credentials = reactive({
         username: '',
         password: ''
       });
-      const router = useRouter();
       const msg = ref(null);
       const login = async() => {
         await req.post('/token', credentials)
