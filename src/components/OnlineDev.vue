@@ -1,8 +1,12 @@
 <template>
   <div>
     <div v-if="Msg" class="error-msg">{{ Msg }}</div>
-    <div>{{ dev2g }}</div>
-    <div>{{ dev5g }}</div>
+    <div v-for="d2g in dev2g" :key="d2g.ip">
+      {{d2g.dname}}
+    </div>
+    <div v-for="d5g in dev5g" :key="d5g.ip">
+      {{d5g.dname}}
+    </div>
   </div>
 </template>
 <script setup>

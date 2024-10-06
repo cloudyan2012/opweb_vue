@@ -9,13 +9,15 @@
 
 <script>
 import onlinedev from "@/components/OnlineDev.vue";
+import charttv from "@/components/ChartTv.vue";
 import Card from '@/components/Card.vue';
 import req from '../utils/request';
 import { onMounted, ref } from "vue";
 export default {
   components: {
     Card,
-    onlinedev
+    onlinedev,
+    charttv
   },
   setup() {
     const cards = ref([]);
@@ -30,7 +32,7 @@ export default {
 };
 
 onMounted(getCards);
-return {cards,Msg,onlinedev};
+return {cards,Msg,onlinedev,charttv};
   }
   }
 </script>
