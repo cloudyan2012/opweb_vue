@@ -12,14 +12,13 @@ export default {
   },
   setup() {
     const userStore = useUserStore();
-    const username = userStore.getUser();
-    return {username}
+    return {userStore}
   }
 };
 </script>
 
 <template>
-  <div v-if="username">
+  <div v-if="userStore.username">
     <NavHeader />
     <Pannel />
   </div>
