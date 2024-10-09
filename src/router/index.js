@@ -1,10 +1,9 @@
-import { createRouter, createWebHistory } from "vue-router";
 import  { useUserStore }  from "@/stores/user";
-import HomeView from "../views/HomeView.vue";
-import SmartView from "@/views/SmartView.vue";
-import LoginView from "@/views/LoginView.vue";
-import LogoutView from "@/views/LogoutView.vue";
+import { createRouter, createWebHistory } from "vue-router";
 
+function loadView(view) {
+  return () => import(`@/views/${view}.vue`);
+}
 
 const router = createRouter({
   history: createWebHistory(),
@@ -12,22 +11,22 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: HomeView,
+      component: loadView('Home')
     },
     {
       path: "/smart",
       name: "smarthome",
-      component: SmartView,
+      component: loadView('Smart')
     },
     {
       path: "/login",
       name: "login",
-      component: LoginView
+      component: loadView('Login')
     },
     {
       path: "/logout",
       name: "logout",
-      component: LogoutView
+      component: loadView('Logout')
     }
   ],
 });

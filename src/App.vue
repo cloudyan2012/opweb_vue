@@ -1,7 +1,7 @@
 <script>
 import NavHeader from "./views/NavView.vue";
 import Pannel from "./views/PannelView.vue";
-import Login from "./views/LoginView.vue";
+import Login from "./views/Login.vue";
 import  { useUserStore }  from "./stores/user";
 export default {
   name: "App",
