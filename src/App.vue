@@ -18,24 +18,13 @@ export default {
 </script>
 
 <template>
-  <div v-if="userStore.username">
-    <NavHeader />
-    <Pannel />
-  </div>
-  <div v-else>
-    <Login />
+  <div class="common-layout">
+    <el-container v-if="userStore.username">
+      <el-header><NavHeader /></el-header>
+      <el-main><Pannel /></el-main>
+    </el-container>
+    <div v-else>
+     <Login />
+    </div>
   </div>
 </template>
-
-<style>
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-.error-msg {
-  color: red;
-  font-size: 1.2rem;
-  margin-top: 1rem;
-}
-</style>

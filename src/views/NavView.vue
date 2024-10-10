@@ -1,18 +1,26 @@
 <template>
-  <div class="nav">
-  <div class="left">
-    <RouterLink to="/">首页</RouterLink>
-    <RouterLink to="/smart">智能家居</RouterLink>
-  </div>
-  <div class="right">
-    {{ user }}
-    <RouterLink to="/logout">登出</RouterLink>
-  </div>
-</div>
+<el-menu
+    :router="true"
+    :ellipsis="false"
+    class="el-menu-demo"
+    mode="horizontal"
+    background-color="#545c64"
+    text-color="#fff"
+    active-text-color="#ffd04b"
+  >
+    <el-menu-item index="/">MyHome</el-menu-item>
+    <el-menu-item index="/smart">智能家居</el-menu-item>
+    <el-menu-item index="0">家庭备忘</el-menu-item>
+    <el-menu-item index="1">学习记录</el-menu-item>
+    <el-sub-menu index="2">
+      <template #title>{{ user }}</template>
+      <el-menu-item :index="`/user?name=${user}`">用户详情</el-menu-item>
+      <el-menu-item index="/logout">退出登录</el-menu-item>
+    </el-sub-menu>
+  </el-menu>
 </template>
 
 <script>
-import { RouterLink } from "vue-router";
 import { useUserStore} from "@/stores/user";
 export default {
   name: "NavView",
@@ -27,7 +35,10 @@ export default {
 </script>
 
 <style scoped>
-.nav {
+.el-menu--horizontal > .el-menu-item:nth-child(1) {
+  margin-right: auto;
+}
+/* .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -43,5 +54,5 @@ export default {
 
 .right {
   align-items: center;
-}
+} */
 </style>

@@ -2,7 +2,6 @@
     <div class="login-container">
       <div class="login-box">
         <h2>Login</h2>
-        <div v-if="msg" class="error-msg">{{msg}}</div> 
         <form @submit.prevent="login">
           <div class="form-group">
             <label for="username">Username:</label>
@@ -29,7 +28,9 @@ export default {
         username: '',
         password: ''
       });
-      const msg = ref(null);
+      const showErr = (msg) => {
+      ElMessage.error(msg)
+      }
       const login = async() => {
         await req.post('/token', credentials)
          .then(response => {
@@ -38,13 +39,12 @@ export default {
             router.push( path || '/');    
           })
          .catch(error => {
-            msg.value=error;
+            showErr(error);
          })
       };
       return {
         credentials,
-        login,
-        msg
+        login
       };
     }
 };
