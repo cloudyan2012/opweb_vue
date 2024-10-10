@@ -5,7 +5,7 @@ const head_token = token ? `Bearer ${token}` : "";
 
 // 创建axios实例
 const req = axios.create({
-  baseURL: "http://op1.lan/cgi-bin/myscript/",
+  baseURL: "https://op1.lan/cgi-bin/myscript/",
   timeout: 9000,
   headers: {
     Authorization: head_token
