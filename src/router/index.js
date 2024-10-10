@@ -1,12 +1,12 @@
 import  { useUserStore }  from "@/stores/user";
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 
 function loadView(view) {
   return () => import(`@/views/${view}.vue`);
 }
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes: [
     {
       path: "/",
