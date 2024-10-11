@@ -1,5 +1,5 @@
 <template>
-  <el-space wrap fill="true">
+  <el-space wrap>
   <div v-for="card in cards" :key="card.id">
     <Card :title="card.title" >
       <component :is="card.name"></component>
