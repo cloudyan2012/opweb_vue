@@ -19,6 +19,11 @@ const router = createRouter({
       component: loadView('Smart')
     },
     {
+      path: "/notes",
+      name: "notes",
+      component: loadView('Notes')
+    },
+    {
       path: "/login",
       name: "login",
       component: loadView('Login')

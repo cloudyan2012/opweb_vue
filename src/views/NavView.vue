@@ -10,7 +10,7 @@
   >
     <el-menu-item index="/">MyHome</el-menu-item>
     <el-menu-item index="/smart">智能家居</el-menu-item>
-    <el-menu-item index="0">家庭备忘</el-menu-item>
+    <el-menu-item index="/notes">事项记录</el-menu-item>
     <el-menu-item index="1">学习记录</el-menu-item>
     <el-sub-menu index="2">
       <template #title>{{ user }}</template>

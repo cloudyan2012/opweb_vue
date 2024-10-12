@@ -1,14 +1,12 @@
 <script>
 import NavHeader from "./views/NavView.vue";
-import Pannel from "./views/PannelView.vue";
 import Login from "./views/Login.vue";
 import  { useUserStore }  from "./stores/user";
 export default {
   name: "App",
   components: {
     NavHeader,
-    Pannel,
-    Login,
+    Login
   },
   setup() {
     const userStore = useUserStore();
@@ -21,7 +19,7 @@ export default {
   <div class="common-layout">
     <el-container v-if="userStore.username">
       <el-header><NavHeader /></el-header>
-      <el-main><Pannel /></el-main>
+      <el-main><RouterView /></el-main>
     </el-container>
     <div v-else>
      <Login />
