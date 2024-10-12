@@ -7,6 +7,7 @@
     background-color="#545c64"
     text-color="#fff"
     active-text-color="#ffd04b"
+    style="overflow: auto;"
   >
     <el-menu-item index="/">MyHome</el-menu-item>
     <el-menu-item index="/smart">智能家居</el-menu-item>
