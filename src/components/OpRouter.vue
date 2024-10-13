@@ -1,10 +1,8 @@
 <template>
 <el-space wrap>
-  <el-text class="mx-1" type="info">设备温度：
-    <el-text class="mx-1" :type="sensor_color">{{ sensor_op }}</el-text>
+  <el-text class="mx-1" type="info">设备温度：<el-text class="mx-1" :type="sensor_color">{{ sensor_op }} </el-text>
   </el-text>
-  <el-text class="mx-1" type="info">运行时间：
-    <el-text class="mx-1" type="success">{{ runtime_op }}</el-text>
+  <el-text class="mx-1" type="info"> 运行时间：<el-text class="mx-1" type="success">{{ runtime_op }}</el-text>
   </el-text>
 </el-space>
 </template>

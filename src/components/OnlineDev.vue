@@ -1,5 +1,5 @@
 <template>
-<el-space wrap>
+<el-space wrap style="padding-right: 19px;">
     <div v-if="Msg" class="error-msg">{{ Msg }}</div>
     <el-badge v-for="d5g in dev5g" :key="d5g.ip" value="5G" class="item" color="#67C23A">
       <el-button>{{d5g.dname}}</el-button>

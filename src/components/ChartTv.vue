@@ -1,5 +1,5 @@
 <template>
-  <div ref="chartDom" style="width: 90%;height:200px;"></div>
+  <div ref="chartDom" style="width: auto;height:200px;"></div>
 </template>
 
 
@@ -19,7 +19,6 @@ import {
 import { LabelLayout, UniversalTransition } from 'echarts/features';
 // 引入 Canvas 渲染器，注意引入 CanvasRenderer 或者 SVGRenderer 是必须的一步
 import { CanvasRenderer } from 'echarts/renderers';
-
 // 注册必须的组件
 echarts.use([
   TitleComponent,
@@ -57,6 +56,10 @@ export default {
           text: '电视开机时长统计'
         },
         tooltip: {},
+        grid: {
+    left: '10%', // 调整左侧的空白
+    right: '10%'
+  },
         xAxis: {
           type: 'category',
           data: xAxisData
@@ -90,7 +93,7 @@ export default {
          },
         }]
       };
-        
+
       myChart.setOption(option);
     };
 
