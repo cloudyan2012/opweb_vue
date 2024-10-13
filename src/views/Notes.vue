@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <h2>待办事项:</h2>
-    <input type="text" v-model="todo" placeholder="输入待办事项">
+    <input type="text" v-model.lazy="todo" placeholder="输入待办事项">
     <button @click="addTodo">添加</button>
     <ul>
       <li v-for="(item, index) in todoList" :key="index" style="display: flex; align-items: center;">
