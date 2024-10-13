@@ -1,14 +1,15 @@
 <template>
-  <div>
+<el-space wrap>
     <div v-if="Msg" class="error-msg">{{ Msg }}</div>
-    <div v-for="d2g in dev2g" :key="d2g.ip">
-      {{d2g.dname}}
-    </div>
-    <div v-for="d5g in dev5g" :key="d5g.ip">
-      {{d5g.dname}}
-    </div>
-  </div>
+    <el-badge v-for="d5g in dev5g" :key="d5g.ip" value="5G" class="item" color="#67C23A">
+      <el-button>{{d5g.dname}}</el-button>
+  </el-badge>
+  <el-badge v-for="d2g in dev2g" :key="d2g.ip" value="2G" class="item" color="rgb(148.6, 212.3, 117.1)">
+      <el-button>{{d2g.dname}}</el-button>
+  </el-badge>
+</el-space>
 </template>
+
 <script setup>
 import req from "../utils/request";
 import { onMounted, ref } from "vue";

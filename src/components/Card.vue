@@ -1,8 +1,8 @@
 <template>
-    <el-card style="min-width: 350px; min-height: 150px;" shadow="always">
+    <el-card style="min-width: 320px; min-height: 130px;" shadow="always">
       <template #header>
         <div class="card-header">
-          <span>{{ title }}</span>
+       <el-text class="mx-1" size="large">{{ title }}</el-text>
         </div>
       </template>
       <slot></slot>

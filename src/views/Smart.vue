@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import oprouter from "@/components/OpRouter.vue";
 import onlinedev from "@/components/OnlineDev.vue";
 import charttv from "@/components/ChartTv.vue";
 import Card from '@/components/Card.vue';
@@ -16,6 +17,7 @@ import { onMounted, ref } from "vue";
 export default {
   components: {
     Card,
+    oprouter,
     onlinedev,
     charttv
   },
@@ -32,7 +34,7 @@ export default {
 };
 
 onMounted(getCards);
-return {cards,Msg,onlinedev,charttv};
+return {cards,Msg};
   }
   }
 </script>

@@ -1,5 +1,5 @@
 <script setup></script>
 
 <template>
-  <main>home page</main>
+  还没想好放什么内容
 </template>
