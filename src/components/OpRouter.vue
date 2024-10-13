@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-import req from "../utils/request";
+import req from "../comm/request";
 import { onMounted, ref, watch } from "vue";
 
 const sensor_op = ref(0);

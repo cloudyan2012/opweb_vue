@@ -18,7 +18,7 @@ export default {
 <template>
   <div class="common-layout">
     <el-container v-if="userStore.username">
-      <el-header><NavHeader /></el-header>
+      <el-header style="padding: inherit; width: auto;"> <el-affix ><NavHeader /></el-affix></el-header>
       <el-main><RouterView /></el-main>
     </el-container>
     <div v-else>

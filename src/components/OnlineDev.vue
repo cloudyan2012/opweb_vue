@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import req from "../utils/request";
+import req from "../comm/request";
 import { onMounted, ref } from "vue";
 
 const dev5g = ref("");

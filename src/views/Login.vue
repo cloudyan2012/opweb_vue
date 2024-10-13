@@ -20,7 +20,7 @@
 <script>
 import { useRouter } from 'vue-router';
 import { reactive, ref } from 'vue';
-import req from '../utils/request';
+import req from '../comm/request';
 export default {
     setup() {
       const router =useRouter();
