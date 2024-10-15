@@ -1,31 +1,41 @@
 <template>
-  <div class="about">
-    <h2>待办事项:</h2>
-    <input type="text" v-model.lazy="todo" placeholder="输入待办事项">
-    <button @click="addTodo">添加</button>
-    <ul>
-      <li v-for="(item, index) in todoList" :key="index" style="display: flex; align-items: center;">
-        <el-checkbox v-model="item.done" size="large" style="flex-shrink: 0;" />
-        <label style="margin-left: 10px; display: inline-block; width: 80%;">
-          <el-text :tag="item.done ? 'del' : 'text'">{{ item.content }}</el-text>
-        </label>
-        <button style="margin-left: 10px; flex-shrink: 0;" @click="todoList.splice(index, 1)">删除</button>
-      </li>
-    </ul>
-    <button @click="clearCompleted">清除已完成</button>
-  </div>
+    <h2>待办事项(单机版):</h2>
+    <el-input v-model.lazy="todo" style="width: 50%" placeholder="输入待办事项" >
+    <template #append>
+    <el-button @click="handleAdd">添加</el-button>
+    </template>
+    </el-input>
+
+  <el-table :data="todoList" style="width: 80%">
+    <el-table-column label="待办事项">
+      <template #default="scope">
+          <span style="margin-left: 10px" :class="{'strikethrough':scope.row.done}">{{ scope.row.content }}</span>
+      </template>
+    </el-table-column>
+    <el-table-column label="操 作" width="180">
+      <template #default="scope">
+        <el-button size="small" @click="handleChange(scope.$index)">标记</el-button>
+        <el-button
+          size="small"
+          type="danger"
+          @click="handleDelete(scope.$index)"
+        >删除</el-button>
+      </template>
+    </el-table-column>
+  </el-table>
+  已完成：{{ totalDone }} / 总数：{{ todoList.length }}  <button @click="handleClear">清除已完成</button>
 </template>
 
 
 <script>
-import { ref } from "vue";
+import { ref,computed,watchEffect } from "vue";
 
 export default {
   setup() {
     const todo = ref('');
-    const todoList = ref([]);
+    const todoList = ref(localStorage.getItem('todoList')? JSON.parse(localStorage.getItem('todoList')) : []);
 
-    const addTodo = () => {
+    const handleAdd = () => {
       if (!todo.value) {
         return alert('内容不能为空');
       }
@@ -33,58 +43,43 @@ export default {
         content: todo.value,
         done: false
       };
-      todoList.value.push(todoObj);
-      console.log(todoList.value);
+      todoList.value.unshift(todoObj);
       todo.value = '';
     };
 
-    const clearCompleted = () => {
+    const handleChange = (index) => {
+      todoList.value[index].done = !todoList.value[index].done;
+    }
+    const handleDelete = (index) => {
+      todoList.value.splice(index, 1)
+    }
+    const handleClear = () => {
       todoList.value = todoList.value.filter(item => !item.done);
     };
+    const totalDone = computed(() => {
+      // return todoList.value.filter(item => item.done).length;
+      return todoList.value.reduce((count, item) => {return item.done ? count + 1 : count;}, 0);
+    });
+
+    watchEffect(() => {
+      localStorage.setItem('todoList', JSON.stringify(todoList.value));
+    });
 
     return {
       todo,
-      addTodo,
-      clearCompleted,
-      todoList
+      todoList,
+      totalDone,
+      handleAdd,
+      handleChange,
+      handleDelete,
+      handleClear
     };
   }
 }
 </script>
 
-<style>
-.about {
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-h2 {
-  text-align: center;
-}
-input {
-  padding: 10px;
-  width: 70%;
-  margin-right: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-button {
-  padding: 10px;
-  border: none;
-  background-color: #28a745;
-  color: #fff;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-left: 10px; /* 为按钮增加左间距 */
-}
-button:hover {
-  background-color: #218838;
-}
-ul {
-  list-style-type: none; /* 去掉前面的圆点 */
-  padding: 0; /* 去掉左侧内边距 */
+<style scoped>
+.strikethrough {
+  text-decoration: line-through;
 }
 </style>
