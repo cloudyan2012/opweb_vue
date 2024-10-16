@@ -1,7 +1,7 @@
 <template>
 <el-menu
     :router="true"
-    :ellipsis="false"
+    :ellipsis="true"
     class="el-menu-demo"
     mode="horizontal"
     background-color="#545c64"
