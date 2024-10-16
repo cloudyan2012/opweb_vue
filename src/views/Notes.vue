@@ -11,9 +11,9 @@
               <span style="margin-left: 10px" :class="{'strikethrough': scope.row.done}">{{ scope.row.content }}</span>
           </template>
       </el-table-column>
-      <el-table-column label="操 作" min-width="70px">
+      <el-table-column label="操 作" min-width="50px">
           <template #default="scope">
-              <el-button size="small" @click="handleChange(scope.$index)">标记</el-button>
+              <el-button size="small" style="margin-left: 12px;" @click="handleChange(scope.$index)">标记</el-button>
               <el-button size="small" type="danger" @click="handleDelete(scope.$index)">删除</el-button>
           </template>
       </el-table-column>
@@ -31,7 +31,9 @@ export default {
   setup() {
       const todo = ref('');
       const todoList = ref(JSON.parse(localStorage.getItem('todoList')) || []);
-
+      const confirmAction = (message) => {
+            return window.confirm('确定执行删除操作吗？');
+      };
       const handleAdd = () => {
           const trimmedTodo = todo.value.trim();
           if (!trimmedTodo) {
@@ -48,14 +50,16 @@ export default {
       };
 
       const handleDelete = (index) => {
+        if (confirmAction()) {
           if (index >= 0 && index < todoList.value.length) {
               todoList.value.splice(index, 1);
-          }
+          }}
       };
 
       const handleClear = () => {
+          if (confirmAction()) {
           todoList.value = todoList.value.filter(item => !item.done);
-      };
+      }};
 
       const totalDone = computed(() => {
         // return todoList.value.filter(item => item.done).length;

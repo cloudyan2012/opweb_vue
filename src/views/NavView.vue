@@ -10,6 +10,7 @@
     style="overflow: auto;"
   >
     <el-menu-item index="/">MyHome</el-menu-item>
+    <div style="flex-grow:calc(0.9);"/>
     <el-menu-item index="/smart">智能家居</el-menu-item>
     <el-menu-item index="/notes">事项记录</el-menu-item>
     <el-menu-item index="1">学习记录</el-menu-item>
@@ -36,8 +37,9 @@ export default {
 </script>
 
 <style scoped>
-.el-menu--horizontal > .el-menu-item:nth-child(1) {
-  margin-right: auto;
+.el-menu--horizontal>.el-menu-item
+{
+  border-bottom: none;
 }
 /* .nav {
   display: flex;
