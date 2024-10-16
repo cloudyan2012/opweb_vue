@@ -1,9 +1,8 @@
 <template>
+   <el-text>台灯： </el-text>
     <el-switch
-    v-model="value"
+    v-model="sw01State"
     size="large"
-    active-text="Open"
-    inactive-text="Close"
     style="--el-switch-on-color: #13ce66; --el-switch-off-color: #ff4949"
   />
 </template>
@@ -15,8 +14,8 @@ import { onMounted, ref } from 'vue';
 
 export default {
   setup() {
-    const value = ref(true)
-    return {value}
+    const sw01State = ref(false)
+    return {sw01State}
   }
 };
 </script>
