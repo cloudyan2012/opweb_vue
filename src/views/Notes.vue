@@ -1,5 +1,5 @@
 <template>
-  <el-input v-model.lazy="todo" style="min-width:300px" placeholder="输入待办事项">
+  <el-input v-model.lazy="todo" style="min-width:300px; max-width: 1000px;" placeholder="输入待办事项">
       <template #append>
           <el-button @click="handleAdd">添加</el-button>
       </template>
