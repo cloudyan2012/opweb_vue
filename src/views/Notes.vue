@@ -1,5 +1,5 @@
 <template>
-  <el-input v-model.lazy="todo" style="width: 50%" placeholder="输入待办事项">
+  <el-input v-model.lazy="todo" style="min-width:400px" placeholder="输入待办事项">
       <template #append>
           <el-button @click="handleAdd">添加</el-button>
       </template>
@@ -11,7 +11,7 @@
               <span style="margin-left: 10px" :class="{'strikethrough': scope.row.done}">{{ scope.row.content }}</span>
           </template>
       </el-table-column>
-      <el-table-column label="操 作" min-width="150">
+      <el-table-column label="操 作" min-width="100px">
           <template #default="scope">
               <el-button size="small" @click="handleChange(scope.$index)">标记</el-button>
               <el-button size="small" type="danger" @click="handleDelete(scope.$index)">删除</el-button>
