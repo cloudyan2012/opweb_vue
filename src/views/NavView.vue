@@ -13,7 +13,7 @@
     <div style="flex-grow:calc(0.9);"/>
     <el-menu-item index="/smart">智能家居</el-menu-item>
     <el-menu-item index="/notes">事项记录</el-menu-item>
-    <el-menu-item index="1">学习记录</el-menu-item>
+    <el-menu-item index="/reports">学习记录</el-menu-item>
     <el-sub-menu index="2">
       <template #title>{{ user }}</template>
       <el-menu-item :index="`/user?name=${user}`">用户详情</el-menu-item>

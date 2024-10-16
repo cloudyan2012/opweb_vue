@@ -11,6 +11,9 @@
 import oprouter from "@/components/OpRouter.vue";
 import onlinedev from "@/components/OnlineDev.vue";
 import charttv from "@/components/ChartTv.vue";
+import myprint from "@/components/Myprint.vue";
+import mysensor from "@/components/MySensor.vue";
+import myswitch from "@/components/MySwitch.vue";
 import Card from '@/components/Card.vue';
 import req from '../comm/request';
 import { onMounted, ref } from "vue";
@@ -19,7 +22,10 @@ export default {
     Card,
     oprouter,
     onlinedev,
-    charttv
+    charttv,
+    myprint,
+    mysensor,
+    myswitch
   },
   setup() {
     const cards = ref([]);

@@ -24,6 +24,11 @@ const router = createRouter({
       component: loadView('Notes')
     },
     {
+      path: "/reports",
+      name: "reports",
+      component: loadView('Reports')
+    },
+    {
       path: "/login",
       name: "login",
       component: loadView('Login')
