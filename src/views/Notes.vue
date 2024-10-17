@@ -5,7 +5,7 @@
       </template>
   </el-input>
 
-  <el-table :data="todoList" style="max-width:1000px">
+  <el-table :data="todoList" style="max-width:1000px" table-layout="autocad"> 
       <el-table-column label="内 容">
           <template #default="scope">
               <span style="margin-left: 10px" :class="{'strikethrough': scope.row.done}">{{ scope.row.content }}</span>
