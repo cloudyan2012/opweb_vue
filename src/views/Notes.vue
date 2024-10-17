@@ -11,10 +11,12 @@
               <span style="margin-left: 10px" :class="{'strikethrough': scope.row.done}">{{ scope.row.content }}</span>
           </template>
       </el-table-column>
-      <el-table-column label="操 作" min-width="62px">
+      <el-table-column label="操 作">
           <template #default="scope">
-              <el-button size="small" style="margin-left: 0px;" @click="handleChange(scope.$index)">标记</el-button>
+             <span style="white-space: nowrap">
+            <el-button size="small" style="margin-left: 0px;" @click="handleChange(scope.$index)">标记</el-button>
               <el-button size="small" type="danger" @click="handleDelete(scope.$index)">删除</el-button>
+       </span>
           </template>
       </el-table-column>
   </el-table>
