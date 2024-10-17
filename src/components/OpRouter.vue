@@ -34,7 +34,7 @@ const getOpStat = async () => {
 onMounted(getOpStat);
 
 watch(sensor_op, (newValue) => {
-  if (newValue > 79) {
+  if (newValue > 75) {
     sensor_color.value = "danger";
   } else {
     sensor_color.value = "success"; 

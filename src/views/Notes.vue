@@ -3,8 +3,8 @@
       <template #append>
           <el-button @click="handleAdd">添加</el-button>
       </template>
-  </el-input>
-
+  </el-input><br/>
+  <el-text class="mx-1" type="warning">*注意：本功能数据存储在您本地设备，不保证数据安全，请不要记录重要信息。</el-text>
   <el-table :data="todoList" style="max-width:1000px" table-layout="auto"> 
       <el-table-column label="内 容">
           <template #default="scope">

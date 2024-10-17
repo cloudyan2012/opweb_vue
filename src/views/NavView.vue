@@ -4,9 +4,6 @@
     :ellipsis="true"
     class="el-menu-demo"
     mode="horizontal"
-    background-color="#545c64"
-    text-color="#fff"
-    active-text-color="#ffd04b"
     style="overflow: auto;"
   >
     <el-menu-item index="/">MyHome</el-menu-item>
