@@ -9,7 +9,8 @@
         placement="top-start"
       >   
         <el-button>{{d5g.dname}}</el-button>
-  </el-badge>
+ </el-tooltip>
+    </el-badge>
   <el-badge v-for="d2g in dev2g" :key="d2g.ip" value="2G" class="item" color="rgb(148.6, 212.3, 117.1)">
      <el-tooltip
         class="box-item"
