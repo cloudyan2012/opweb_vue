@@ -52,12 +52,12 @@ export default {
     };
 
     const handleSelect = async (item) => {
-      if (!item || !item.link) {
+      if (!item || !item.uname) {
         alert("无效的选择，请重新选择。");
         return;
       }
       try {
-        const res = await req.get(`/exam?user=${item.link}`);
+        const res = await req.get(`/exam?user=${item.uid}`);
         reportList.value = res.data || []; // 确保有数据赋值
       } catch (error) {
         const errorMessage = error.response?.data?.message || error.message || "未知错误";
