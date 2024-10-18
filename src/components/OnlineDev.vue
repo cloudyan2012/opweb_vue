@@ -2,12 +2,18 @@
 <el-space wrap style="padding-right: 19px;">
     <div v-if="Msg" class="error-msg">{{ Msg }}</div>
     <el-badge v-for="d5g in dev5g" :key="d5g.ip" value="5G" class="item" color="#67C23A">
-      <el-button>{{d5g.dname}}</el-button>
+      <el-tooltip
+        class="box-item"
+        effect="light"
+        :content="d5g.ip"
+        placement="top-start"
+      >   
+        <el-button>{{d5g.dname}}</el-button>
   </el-badge>
   <el-badge v-for="d2g in dev2g" :key="d2g.ip" value="2G" class="item" color="rgb(148.6, 212.3, 117.1)">
      <el-tooltip
         class="box-item"
-        effect="dark"
+        effect="light"
         :content="d2g.ip"
         placement="top-start"
       >   
