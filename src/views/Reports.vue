@@ -23,14 +23,14 @@ import req from "@/comm/request";
 export default {
   setup() {
     const reportList = ref([]);
-    const links = ref([]);
+    const users = ref([]);
     const state = ref('');
 
-    const fetchLinks = async () => {
+    const fetchUsers = async () => {
       try {
         const response = await req.get('/user');
         if (Array.isArray(response)) {
-          links.value = response; 
+          users.value = response; 
         } else {
           console.warn('返回的数据格式不正确。');
         }
@@ -39,7 +39,7 @@ export default {
       }
     };
 
-    onMounted(fetchLinks);
+    onMounted(fetchUsers);
 
     const querySearchAsync = (queryString, cb) => {
       if (!queryString) {
@@ -67,7 +67,7 @@ export default {
 
     return {
       reportList,
-      links,
+      
       state,
       querySearchAsync,
       handleSelect
