@@ -1,6 +1,7 @@
 <template>
   <el-autocomplete
     v-model="state"
+    value-key="uname"
     :fetch-suggestions="querySearchAsync"
     placeholder="点击选择或直接输入姓名查询成绩"
     @select="handleSelect"
