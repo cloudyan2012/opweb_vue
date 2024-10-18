@@ -43,11 +43,11 @@ export default {
 
     const querySearchAsync = (queryString, cb) => {
       if (!queryString) {
-        cb(links.value); // 如果没有输入则返回所有链接
+        cb(users.value); // 如果没有输入则返回所有链接
         return;
       }
       const lowerCaseQuery = queryString.toLowerCase();
-      const results = links.value.filter(link => link.value.toLowerCase().startsWith(lowerCaseQuery));
+      const results = users.value.filter(user => user.value.toLowerCase().startsWith(lowerCaseQuery));
       cb(results);
     };
 
