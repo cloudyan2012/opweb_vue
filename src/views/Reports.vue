@@ -50,7 +50,7 @@ export default {
       }
       const lowerCaseQuery = queryString.toLowerCase();
       const results = users.value.filter((user) =>
-        user.value.toLowerCase().startsWith(lowerCaseQuery)
+        user.name.toLowerCase().startsWith(lowerCaseQuery)
       );
       cb(results);
     };
