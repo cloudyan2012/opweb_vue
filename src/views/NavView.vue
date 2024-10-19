@@ -1,13 +1,14 @@
 <template>
-<el-menu
+  <el-menu
     :router="true"
     :ellipsis="true"
     class="el-menu-demo"
     mode="horizontal"
-    style="overflow: auto;"
+    background-color="rgb(235.9, 245.3, 255)"
+    style="overflow: auto"
   >
     <el-menu-item index="/">MyHome</el-menu-item>
-    <div style="flex-grow:calc(0.9);"/>
+    <div style="flex-grow: calc(0.9)" />
     <el-menu-item index="/smart">智能家居</el-menu-item>
     <el-menu-item index="/notes">事项记录</el-menu-item>
     <el-menu-item index="/reports">学习记录</el-menu-item>
@@ -20,7 +21,7 @@
 </template>
 
 <script>
-import { useUserStore} from "@/stores/user";
+import { useUserStore } from "@/stores/user";
 export default {
   name: "NavView",
 
@@ -28,14 +29,14 @@ export default {
     const userStore = useUserStore();
     const user = userStore.username;
     return {
-      user
+      user,
     };
-  }}
+  },
+};
 </script>
 
 <style scoped>
-.el-menu--horizontal>.el-menu-item
-{
+.el-menu--horizontal > .el-menu-item {
   border-bottom: none;
 }
 /* .nav {
