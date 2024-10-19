@@ -15,7 +15,7 @@
     <el-table-column prop="English" label="英语" />
   </el-table>
   <button @click="drawLineChart">绘制折线图</button
-  
+
   <!-- 折线图容器 -->
 </template>
 
