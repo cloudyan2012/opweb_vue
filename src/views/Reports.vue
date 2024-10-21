@@ -7,24 +7,21 @@
     @select="handleSelect"
     style="min-width: 300px; max-width: 300px"
   />
-
-  <el-table :data="reportList" height="300" stripe style="max-width: 1000px">
-    <el-table-column prop="ExamDate" label="Date" />
-    <el-table-column prop="Chinese" label="语文" />
-    <el-table-column prop="Mathematics" label="数学" />
-    <el-table-column prop="English" label="英语" />
-  </el-table>
-  <button @click="drawLineChart">绘制折线图</button
-
-  <!-- 折线图容器 -->
+  <div v-if="reportList && reportList.length">
+    <tablereport :tableData="reportList" />
+    <chartreport :tableData="reportList" />
+  </div>
+  <div v-else style="text-align: center;"><el-text>暂无数据</el-text></div>
 </template>
 
 <script>
 import { ref, onMounted } from "vue";
 import req from "@/comm/request";
-import echarts from "@/comm/echarts";
+import tablereport from "@/components/TableReport.vue";
+import chartreport from "@/components/ChartReport.vue";
 
 export default {
+  components: { tablereport,chartreport },
   setup() {
     const reportList = ref([]);
     const users = ref([]);
@@ -39,76 +36,33 @@ export default {
           console.warn("返回的数据格式不正确。");
         }
       } catch (error) {
-        console.error("获取链接失败:", error);
+        console.error("获取用户列表失败:", error);
+        alert("获取用户失败，请检查网络或稍后再试。");
       }
     };
 
     const querySearchAsync = (queryString, cb) => {
-      if (!queryString) {
-        cb(users.value); // 如果没有输入则返回所有链接
-        return;
-      }
-      const lowerCaseQuery = queryString.toLowerCase();
-      const results = users.value.filter((user) =>
-        user.uname.toLowerCase().startsWith(lowerCaseQuery)
-      );
+      const results = !queryString
+        ? users.value
+        : users.value.filter(user =>
+            user.uname.toLowerCase().startsWith(queryString.toLowerCase())
+          );
       cb(results);
     };
 
     const handleSelect = async (item) => {
-      if (!item || !item.uname) {
+      if (!item?.uname) {
         alert("无效的选择，请重新选择。");
         return;
       }
       try {
         const res = await req.get(`/exam?user=${item.uid}`);
-        reportList.value = res.data || []; // 确保有数据赋值
+        reportList.value = (res.data && Array.isArray(res.data)) ? res.data : [];
       } catch (error) {
         const errorMessage =
           error.response?.data?.message || error.message || "未知错误";
         alert(`获取数据失败: ${errorMessage}，请稍后再试。`);
       }
-    };
-
-    const drawLineChart = () => {
-      const chartDom = document.getElementById("lineChart");
-      const myChart = echarts.init(chartDom);
-      const option = {
-        title: {
-          text: "成绩折线图",
-        },
-        tooltip: {
-          trigger: "axis",
-        },
-        legend: {
-          data: ["语文", "数学", "英语"],
-        },
-        xAxis: {
-          type: "category",
-          data: reportList.value.map((item) => item.ExamDate),
-        },
-        yAxis: {
-          type: "value",
-        },
-        series: [
-          {
-            name: "语文",
-            type: "line",
-            data: reportList.value.map((item) => item.Chinese),
-          },
-          {
-            name: "数学",
-            type: "line",
-            data: reportList.value.map((item) => item.Mathematics),
-          },
-          {
-            name: "英语",
-            type: "line",
-            data: reportList.value.map((item) => item.English),
-          },
-        ],
-      };
-      myChart.setOption(option);
     };
 
     onMounted(fetchUsers);
