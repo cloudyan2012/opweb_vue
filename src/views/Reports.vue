@@ -8,8 +8,10 @@
     style="min-width: 300px; max-width: 300px"
   />
   <div v-if="reportList && reportList.length">
+    <el-space direction="vertical" size="large" fill style="min-width: 90%;">
     <tablereport :tableData="reportList" />
     <chartreport :tableData="reportList" />
+  </el-space>
   </div>
   <div v-else style="text-align: center;"><el-text>暂无数据</el-text></div>
 </template>
