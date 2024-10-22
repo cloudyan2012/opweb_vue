@@ -1,5 +1,5 @@
 <template>
-  <div ref="chartDom" style="width: auto;height:200px;"></div>
+  <div ref="chartDom" style="width: auto;height:150px;"></div>
 </template>
 
 
@@ -25,14 +25,13 @@ export default {
       const seriesData = data.map(item => item.stat);
 
       const option = {
-        // title: {
-        //   text: '电视开机时长统计'
-        // },
         tooltip: {},
         grid: {
-    left: '10%', // 调整左侧的空白
-    right: '10%'
-  },
+        top:'5%',   
+        left: '15%',
+        right: '1%',
+        bottom: '15%'
+       },
         xAxis: {
           type: 'category',
           data: xAxisData
