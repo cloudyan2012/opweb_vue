@@ -25,9 +25,9 @@ export default {
       const seriesData = data.map(item => item.stat);
 
       const option = {
-        title: {
-          text: '电视开机时长统计'
-        },
+        // title: {
+        //   text: '电视开机时长统计'
+        // },
         tooltip: {},
         grid: {
     left: '10%', // 调整左侧的空白
