@@ -1,7 +1,7 @@
 <template>
-  累计打印：<el-text class="mx-1" type="success">{{ printCount }}</el-text>
-  黑白：<el-text class="mx-1" type="success">{{ blackCount }} </el-text>
-  彩色：<el-text class="mx-1" type="success">{{ colorCount }}</el-text><br/>
+  <el-text class="mx-1" type="info">累计打印：</el-text><el-text class="mx-1" type="success">{{ printCount }}</el-text>
+  <el-text class="mx-1" type="info">黑白：</el-text><el-text class="mx-1" type="success">{{ blackCount }} </el-text>
+  <el-text class="mx-1" type="info">彩色：</el-text><el-text class="mx-1" type="success">{{ colorCount }}</el-text><br/>
   <el-text v-show="!stats" class="mx-1" type="warning">当前打印机未连接,以上为历史信息</el-text>
 </template>
 

@@ -20,9 +20,10 @@
           </template>
       </el-table-column>
   </el-table>
-  <div style="margin-top: 10px">
+  <div style="margin-top: 10px;max-width:1000px;display: flex;">
   <el-text class="mx-1" size="default">已完成：{{ totalDone }} / 总数：{{ todoList.length }}</el-text>
-  <el-button @click="handleClear"  type="danger" style="margin-left: 10px;">清除已完成</el-button>
+  <div style="flex-grow: calc(0.54);"/>
+  <el-button size="small" @click="handleClear"  type="danger" style="margin-left: 10px;">清除已完成</el-button>
   </div>
 </template>
 

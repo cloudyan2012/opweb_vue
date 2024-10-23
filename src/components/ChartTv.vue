@@ -1,5 +1,6 @@
 <template>
-  <div ref="chartDom" style="width: auto;height:150px;"></div>
+  <div v-if="tvData" ref="chartDom" style="width: auto;height:80px;"></div>
+  <div v-else><el-text class="mx-1" type="danger">暂无数据</el-text></div>
 </template>
 
 
@@ -11,26 +12,22 @@ import { onMounted, ref } from 'vue';
 export default {
   name: 'ChartTv',
   setup() {
-    const chartDom = ref(null); // 使用 ref 存储 DOM 元素的引用
-    
+    const chartDom = ref(null);  
+    const tvData = ref(true);
     const getData = async () => {
       const res = await req.get("/logtv");
       return res.data;
     };
 
     const drawChart = (data) => {
-      const myChart = echarts.init(chartDom.value); // 使用 ref 的值
-        
+      const myChart = echarts.init(chartDom.value);      
       const xAxisData = data.map(item => item.time);
       const seriesData = data.map(item => item.stat);
-
       const option = {
         tooltip: {},
         grid: {
-        top:'5%',   
-        left: '15%',
-        right: '1%',
-        bottom: '15%'
+        left: '12%',
+        right: '1%'       
        },
         xAxis: {
           type: 'category',
@@ -39,6 +36,7 @@ export default {
         yAxis: {
   type: 'value',
   interval: 1,
+  max: 1,
   min: 0,
   axisLabel: {
     formatter: function (value) {
@@ -71,11 +69,15 @@ export default {
 
     onMounted(async () => {
       const data = await getData();
-      drawChart(data);
+      if (!data) {
+        tvData.value = false; 
+      } else {
+        drawChart(data);
+      }
     });
 
     return {
-      chartDom // 返回用于模板中的引用
+      chartDom,tvData
     };
   },
 };
