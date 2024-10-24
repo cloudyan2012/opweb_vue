@@ -19,3 +19,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.el-card__header{
+  background-color:rgb(243.9, 244.2, 244.8);
+}
+</style>

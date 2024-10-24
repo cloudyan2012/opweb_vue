@@ -1,7 +1,6 @@
 <template>
     <div class="login-container">
       <div class="login-box">
-        <h2>Login</h2>
         <form @submit.prevent="login">
           <div class="form-group">
             <label for="username">Username:</label>
@@ -75,7 +74,7 @@ export default {
    
   .form-group input[type="text"],
   .form-group input[type="password"] {
-    width: 100%;
+    width: -webkit-fill-available;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;

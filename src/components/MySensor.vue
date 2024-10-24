@@ -9,8 +9,8 @@ import req from "@/comm/request";
 import { ref } from "vue";
 export default {
   setup() {
-    const temp= ref(0);
-    const hum= ref(0);
+    const temp= ref(NaN);
+    const hum= ref(NaN);
     return {temp, hum};
   }
 };
