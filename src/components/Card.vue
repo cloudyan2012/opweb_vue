@@ -23,5 +23,6 @@ export default {
 <style>
 .el-card__header{
   background-color:rgb(243.9, 244.2, 244.8);
+  padding: 10px;
 }
 </style>
