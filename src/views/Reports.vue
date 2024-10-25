@@ -47,7 +47,7 @@ export default {
       const results = !queryString
         ? users.value
         : users.value.filter(user =>
-            user.uname.toLowerCase().startsWith(queryString.toLowerCase())
+            user.uname.toLowerCase().indexOf(queryString.toLowerCase())!==-1
           );
       cb(results);
     };
