@@ -86,12 +86,12 @@ export default {
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #5cb85c;
+    background-color: #409EFF;
     color: white;
     cursor: pointer;
   }
    
   button[type="submit"]:hover {
-    background-color: #409EFF;
+    background-color: #5cb85c;
   }
 </style>
