@@ -1,0 +1,1 @@
+import{_ as e,u as o}from"./index-BNcL0hPe.js";const r={setup(){const t=o();localStorage.removeItem("token"),t.push("/")}};function s(t,n,u,c,a,p){return null}const f=e(r,[["render",s]]);export{f as default};
