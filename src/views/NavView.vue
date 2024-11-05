@@ -40,6 +40,9 @@ export default {
 .el-menu--horizontal > .el-menu-item {
   border-bottom: none;
 }
+.el-menu--horizontal>.el-menu-item.is-active {
+  color: rgb(197.7, 225.9, 255) !important;
+  }
 /* .nav {
   display: flex;
   justify-content: space-between;
