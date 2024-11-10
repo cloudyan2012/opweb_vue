@@ -15,6 +15,7 @@
     <el-menu-item index="/reports">学习记录</el-menu-item>
     <el-sub-menu index="2">
       <template #title>{{ user }}</template>
+      <el-menu-item index="/admin">数据管理</el-menu-item>
       <el-menu-item :index="`/user?name=${user}`">用户详情</el-menu-item>
       <el-menu-item index="/logout">退出登录</el-menu-item>
     </el-sub-menu>

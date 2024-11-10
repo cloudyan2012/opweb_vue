@@ -29,6 +29,11 @@ const router = createRouter({
       component: loadView('Reports')
     },
     {
+      path: "/admin",
+      name: "admin",
+      component: loadView('Admin')
+    },
+    {
       path: "/login",
       name: "login",
       component: loadView('Login')
