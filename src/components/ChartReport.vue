@@ -1,5 +1,5 @@
 <template>
-  <div ref="chartDom" style="width: 100%; height: 270px;"></div>
+  <div ref="chartDom" style="width: 100%; height: 270px; background-color: #fafafa;"></div>
 </template>
 
 <script>

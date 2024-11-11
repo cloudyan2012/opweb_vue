@@ -1,5 +1,5 @@
 <template>
-    <el-table :data="tableData" stripe height="220">
+  <el-table :data="tableData" stripe height="240">
     <el-table-column prop="ExamDate" label="Date" />
     <el-table-column prop="Chinese" label="语文" />
     <el-table-column prop="Mathematics" label="数学" />
