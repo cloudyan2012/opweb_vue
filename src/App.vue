@@ -19,7 +19,7 @@ export default {
   <div class="common-layout">
     <el-container v-if="userStore.username">
       <el-header style="padding: inherit; width: auto;"> <el-affix ><NavHeader /></el-affix></el-header>
-      <el-main><RouterView /></el-main>
+      <el-main style="background-color: #f4f4f5;"><RouterView /></el-main>
     </el-container>
     <div v-else>
      <Login />

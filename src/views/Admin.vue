@@ -6,7 +6,7 @@
     <el-table-column prop="Chinese" label="语文" />
     <el-table-column prop="Mathematics" label="数学" />
     <el-table-column prop="English" label="英语" />
-    <el-table-column label="操 作">
+    <el-table-column label="操 作" min-width="140px">
       <template #default="scope"><span style="white-space: nowrap">
         <el-button size="small" style="margin-left: 0px;" @click="handleChange(scope.$index)">修改</el-button>
         <el-button size="small" type="danger" @click="handleDelete(scope.$index)">删除</el-button>
