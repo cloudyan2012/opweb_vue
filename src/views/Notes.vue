@@ -8,7 +8,7 @@
   <el-table :data="todoList" style="max-width:1000px" table-layout="auto"> 
       <el-table-column label="内 容">
           <template #default="scope">
-              <span style="margin-left: 10px" :class="{'strikethrough': scope.row.done}">{{ scope.row.content }}</span>
+              <span style="margin-left: 10px" class="blodtext" :class="{'strikethrough': scope.row.done}">{{ scope.row.content }}</span>
           </template>
       </el-table-column>
       <el-table-column label="操 作">
@@ -92,6 +92,9 @@ export default {
 </script>
 
 <style scoped>
+.blodtext:hover {
+  font-weight: bold;
+}
 .strikethrough {
   text-decoration: line-through;
 }
