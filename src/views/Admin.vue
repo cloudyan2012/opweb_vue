@@ -56,7 +56,7 @@ export default {
     const disableInput = ref(false);
     const formTitle = ref("");
     const examForm = reactive({
-      id: '',
+      name: '',
       ExamDate: '',
       Chinese: 0,
       Mathematics: 0,
