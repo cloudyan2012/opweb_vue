@@ -117,7 +117,8 @@ export default {
         getData();
         dialogFormVisible.value = false;
       }).catch(error => {
-        console.error("数据提交失败:", error.message || error);
+        // console.error("数据提交失败:", error.message || error);
+        ElMessage.error(error.message || error);
       });
     };
 
