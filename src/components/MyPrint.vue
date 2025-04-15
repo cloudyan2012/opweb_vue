@@ -20,7 +20,7 @@ export default {
     const fetchPrintData = async () => {
       try {
         const res = await req.get('/print');
-        stats.value = res.stat;
+        stats.value = res.online;
         printCount.value = res.p_all;
         colorCount.value = res.p_color;
       } catch (error) {
