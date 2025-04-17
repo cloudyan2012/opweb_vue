@@ -108,7 +108,11 @@ export default {
     const handleDelete = async (index) => {
       const confirmation = confirm("确认删除该条数据吗？");
       if (confirmation) {
-        tableData.value.splice(index, 1);
+        req.delete("/exam", examForm).then(() => {
+          tableData.value.splice(index, 1);
+      }).catch(error => {
+        ElMessage.error(error.message || error);
+      });
       }
     };
 
