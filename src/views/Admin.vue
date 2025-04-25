@@ -127,7 +127,8 @@ export default {
       const confirmation = confirm("确认删除该条数据吗？");
       if (confirmation) {
         const currentItem = tableData.value[index];
-        req.delete(`/exam/${currentItem.id}?date=${currentItem.exam_date}`).then(() => {
+        const timestamp = new Date(currentItem.exam_date).getTime();
+        req.delete(`/exam/${currentItem.id}?date=${timestamp}`).then(() => {
           tableData.value.splice(index, 1);
       }).catch(error => {
         ElMessage.error(error.message || error);
