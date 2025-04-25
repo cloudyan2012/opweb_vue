@@ -22,10 +22,10 @@ export default {
       const englishScores = [];
 
       tableData.value.forEach(item => {
-        examDates.push(item.ExamDate);
-        chineseScores.push(item.Chinese);
-        mathematicsScores.push(item.Mathematics);
-        englishScores.push(item.English);
+        examDates.push(item.exam_date);
+        chineseScores.push(item.chinese);
+        mathematicsScores.push(item.mathematics);
+        englishScores.push(item.english);
       });
 
       const option = {

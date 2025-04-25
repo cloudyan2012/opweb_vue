@@ -1,9 +1,9 @@
 <template>
   <el-table :data="tableData" stripe height="240">
-    <el-table-column prop="ExamDate" label="Date" />
-    <el-table-column prop="Chinese" label="语文" />
-    <el-table-column prop="Mathematics" label="数学" />
-    <el-table-column prop="English" label="英语" />
+    <el-table-column prop="exam_date" label="Date" />
+    <el-table-column prop="chinese" label="语文" />
+    <el-table-column prop="mathematics" label="数学" />
+    <el-table-column prop="english" label="英语" />
   </el-table>
 </template>
 
