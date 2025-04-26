@@ -60,7 +60,7 @@ export default {
         return;
       }
       try {
-        const res = await req.get(`/exam?user=${item.uid}`);
+        const res = await req.get(`/exam/${item.uid}`);
         reportList.value = (res.data && Array.isArray(res.data)) ? res.data : [];
         loading.value = false;
       } catch (error) {
