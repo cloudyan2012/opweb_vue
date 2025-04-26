@@ -20,7 +20,7 @@
   <el-dialog v-model="dialogFormVisible" :title="formTitle" width="400px" draggable align-center>
     <el-form :model="examForm" label-position="left" label-width="auto" style="margin-left: 10%;">
       <el-form-item label="姓 名">
-        <el-select v-model="examForm.id" placeholder="Select" :disabled="disableInput" style="width: 150px">
+        <el-select v-model="examForm.uid" placeholder="Select" :disabled="disableInput" style="width: 150px">
         <el-option
         v-for="item in userData"
         :key="item.uid"
@@ -73,7 +73,7 @@ export default {
     const disableInput = ref(false);
     const formTitle = ref("");
     const examForm = reactive({
-      id: '',
+      uid: '',
       exam_date: '',
       chinese: 0,
       mathematics: 0,
@@ -101,7 +101,7 @@ export default {
     onMounted(getData);
 
     const resetForm = () => {
-      examForm.id = "";
+      examForm.uid = "";
       examForm.exam_date = "";
       examForm.chinese = 0; 
       examForm.mathematics = 0;
