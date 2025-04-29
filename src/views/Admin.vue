@@ -3,7 +3,12 @@
   <el-table :data="tableData" stripe height="350">
     <el-table-column prop="id" label="ID" />
     <el-table-column fixed prop="name" label="Name" />
-    <el-table-column fixed prop="exam_date" label="Date" />
+    <el-table-column fixed prop="comment" label="年级" />
+    <el-table-column prop="exam_date" label="Date">
+      <template #default="scope">
+      {{ timestampToYearMonth(scope.row.exam_date) }}
+      </template>
+    </el-table-column>
     <el-table-column prop="chinese" label="语文" />
     <el-table-column prop="mathematics" label="数学" />
     <el-table-column prop="english" label="英语" />
@@ -74,7 +79,8 @@ export default {
     const formTitle = ref("");
     const examForm = reactive({
       uid: '',
-      exam_date: '',
+      comment: "",
+      exam_date: null,
       chinese: 0,
       mathematics: 0,
       english: 0
@@ -102,7 +108,8 @@ export default {
 
     const resetForm = () => {
       examForm.uid = "";
-      examForm.exam_date = "";
+      examForm.comment = "",
+      examForm.exam_date = null;
       examForm.chinese = 0; 
       examForm.mathematics = 0;
       examForm.english = 0;
@@ -130,6 +137,7 @@ export default {
         const timestamp = new Date(currentItem.exam_date).getTime();
         req.delete(`/exam/${currentItem.id}?date=${timestamp}`).then(() => {
           tableData.value.splice(index, 1);
+          ElMessage.success("删除成功");
       }).catch(error => {
         ElMessage.error(error.message || error);
       });
@@ -140,12 +148,21 @@ export default {
       req.post("/exam", examForm).then(() => {
         getData();
         dialogFormVisible.value = false;
+        ElMessage.success("提交成功");
       }).catch(error => {
         ElMessage.error(error.message || error);
       });
     };
 
+    const timestampToYearMonth = (timestamp) => {
+     const date = new Date(timestamp);
+     const year = date.getFullYear();
+     const month = date.getMonth() + 1; // getMonth() 返回的是0-11，需要加1
+     return `${year}.${month.toString().padStart(2, '0')}`; // 保证月份是两位数
+    };
+
     return {
+      timestampToYearMonth,
       userData,
       tableData, 
       submitExamForm, 
