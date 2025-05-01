@@ -1,6 +1,6 @@
 <template>
   <el-table :data="tableData" stripe height="240">
-    <el-table-column prop="exam_date" label="Date" />
+    <el-table-column prop="comment" label="Date" />
     <el-table-column prop="chinese" label="语文" />
     <el-table-column prop="mathematics" label="数学" />
     <el-table-column prop="english" label="英语" />
