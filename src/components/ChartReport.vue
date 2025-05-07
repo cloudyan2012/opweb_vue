@@ -22,7 +22,9 @@ export default {
       const englishScores = [];
 
       tableData.value.forEach(item => {
-        examDates.push(item.exam_date);
+        const date = new Date(item.exam_date);
+        const formattedDate = `${date.getFullYear()}.${date.getMonth() + 1}`;
+        examDates.push(formattedDate);
         chineseScores.push(item.chinese);
         mathematicsScores.push(item.mathematics);
         englishScores.push(item.english);
@@ -41,7 +43,11 @@ export default {
        },
         xAxis: {
           type: 'category',
-          data: examDates
+          data: examDates,
+          axisLabel: {
+          rotate: 45,
+          interval: 0
+          }
         },
         yAxis: {
           type: 'value',
