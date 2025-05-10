@@ -45,7 +45,7 @@
         />
       </el-form-item>
       <el-form-item label="年级">
-        <el-input v-model="input" placeholder="输入年级,如一年级1" style="width: 150px"/>
+        <el-input v-model="examForm.comment" placeholder="输入年级,如一年级1" style="width: 150px"/>
       </el-form-item>
       <el-form-item label="语文">
         <el-input-number v-model="examForm.chinese" :max="100" />
