@@ -1,6 +1,6 @@
 <template>
   <el-button type="info" @click="showForm()" style="margin-bottom: 5px;">新增数据</el-button>
-  <el-table :data="tableData" stripe height="450">
+  <el-table :data="tableData" stripe height="500">
     <el-table-column fixed prop="name" label="Name" />
     <el-table-column fixed prop="comment" label="年级" />
     <el-table-column prop="exam_date" label="Date">
@@ -24,7 +24,7 @@
   <el-dialog v-model="dialogFormVisible" :title="formTitle" width="400px" draggable align-center>
     <el-form :model="examForm" label-position="left" label-width="auto" style="margin-left: 10%;">
       <el-form-item label="姓 名">
-        <el-select v-model="examForm.name" placeholder="Select" style="width: 150px">
+        <el-select v-model="examForm.name" :disabled="disableInput" placeholder="Select" style="width: 150px">
         <el-option
         v-for="item in userData"
         :key="item.uid"
