@@ -1,16 +1,23 @@
 import axios from "axios";
 
-const token = localStorage.getItem("token");
-const head_token = token ? `Bearer ${token}` : "";
-
 // 创建axios实例
 const req = axios.create({
   baseURL: "https://op1.lan:10443/cgi-bin/",
-  timeout: 9000,
-  headers: {
-    Authorization: head_token
-  }
+  timeout: 9000
 });
+
+// 请求拦截器
+req.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("token");
+    const head_token = token ? `Bearer ${token}` : "";
+    config.headers.Authorization = head_token;
+    return config;
+  },
+  (err) => {
+    return Promise.reject(err);
+  }
+);
 
 // 响应拦截器
 req.interceptors.response.use(
@@ -31,8 +38,12 @@ req.interceptors.response.use(
 
     if (err.response) {
       // 如果err.response存在，则获取状态码并查找对应的错误信息
-      const code = err.response.status;
-      errMsg = errMap[code] || "接口返回了未知错误"; // 处理未映射的状态码
+      const resp_code = err.response.status;
+      if (resp_code === 401){
+        localStorage.setItem('token', '');
+        window.location.reload();
+      }
+      errMsg = errMap[resp_code] || "接口返回了未知错误"; // 处理未映射的状态码
     } else {
       // 处理网络错误或其他异常
       errMsg = "获取返回码异常，请检查接口或网络";
