@@ -62,7 +62,7 @@ export default {
 .chat-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 80vh;
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;

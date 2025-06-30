@@ -24,7 +24,7 @@
   <el-dialog v-model="dialogFormVisible" :title="formTitle" width="400px" draggable align-center>
     <el-form :model="examForm" label-position="left" label-width="auto" style="margin-left: 10%;">
       <el-form-item label="姓 名">
-        <el-select v-model="examForm.name" :disabled="disableInput" placeholder="Select" style="width: 150px">
+        <el-select v-model="examForm.uid" :disabled="disableInput" placeholder="Select" style="width: 150px">
         <el-option
         v-for="item in userData"
         :key="item.uid"
@@ -147,6 +147,7 @@ export default {
     };
 
     const submitExamForm = () => {
+      console.log('submitExamForm called with examForm:', examForm);
       req.post("/exam", examForm).then(() => {
         getData();
         dialogFormVisible.value = false;
