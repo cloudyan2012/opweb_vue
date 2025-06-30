@@ -20,7 +20,7 @@ export default {
       // 模拟AI回复
       setTimeout(() => {
         this.messages.push({
-          text: 'AI回复xxx',
+          text: '获取ai返回异常',
           sender: 'ai',
           timestamp: new Date().toLocaleTimeString()
         })
