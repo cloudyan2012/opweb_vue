@@ -1,1 +1,0 @@
-import{bk as e,bn as o}from"./index-DCHiyfn3.js";const r={setup(){const t=o();localStorage.removeItem("token"),t.push("/")}};function s(t,n,c,u,a,p){return null}const f=e(r,[["render",s]]);export{f as default};
